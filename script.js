@@ -394,6 +394,7 @@ console.log({
 
 
 /**
+ * Ejercisio 5
  * Del siguiente arreglo obtener el número de veces que cada sabor de helado
  * aparece.
  * {
@@ -437,15 +438,34 @@ console.log({
     favoriteIceCreams: ['Strawberry', 'Chocolate', 'Mint Chocolate Chip']
    }
    ];
-// entrar al dato de una poscion del arroglo general --- data[0].favoriteIceCreams[0]
-const res = data.reduce((a,b,c,d) => {
-    b == data.filter((busqueda, indice) =>{
-        data[c].favoriteIceCreams[indice] == busqueda.favoriteIceCreams[c]
-        //console.log(busqueda.favoriteIceCreams[c]);
-        //console.log(data[c].favoriteIceCreams[indice]);
-    });
-    //b= data.filter((fa,fb) => data[]);
-    //console.log(b.favoriteIceCreams[0]);//aqui me das solo el primer helado de todos los arreglos.
-},0);
-   console.log(data[0]);
-   console.log();
+
+   /*Aqui debemos de poner los elementos que queremos encontrar
+   y igualarlos todos a cero ya que empezaremos el conteo o a buscarlos*/ 
+   let conteo = 
+   {
+      "Strawberry": 0,
+      "Vanilla": 0,
+      "Chocolate": 0,
+      "Cookies & Cream": 0,
+      "Mint Chocolate Chip": 0,
+      "Rocky Road": 0,
+      "Pistachio": 0,
+      "Banana": 0,
+      "French Vanilla": 0,
+      "Vanilla Bean": 0
+   } 
+   /* creamos un reduce con un acumulador y el elemento siguiente, este ultimo nos ayudara a ir contando los elementos
+   en el map de abajo*/
+   const helados = data.reduce((acumulador,current) =>
+   {
+       /*Creamo un map con el arreglo siguiente y vamos sacando elemto por elemento
+       y en seguida entramos al conteo de arriba y buscamos el nombre del helado que es el elemnto que nos da el map
+       y los ++ es que a 0 le sumamos 1 mas 1 y asi je*/
+       current.favoriteIceCreams.map((elements) => acumulador[elements]++);
+       /*finalmente retornamos el acomuludor con los elementos encontrados en ese arreglo, ahora 
+       vamos a el siguiente arreglo y al siguiente y asi */
+        return acumulador;
+        /*inicialisamos con el conteo el reduce nomas*/
+   },conteo);
+   //y pus ya nomas imprimimos toda esta talachita je
+   console.log(helados);
